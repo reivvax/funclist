@@ -4,7 +4,6 @@
 #include <functional>
 #include <string>
 #include <sstream>
-#include <iostream>
 #include <ranges>
 
 namespace detail {
