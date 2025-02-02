@@ -30,6 +30,7 @@ int main()
     assert(flist::as_string(l1) == "[1;2.5]");
     assert(l1(add, 0.0) == 3.5);
     assert(l1(add, 0) == 3);
+    assert(flist::size(l1) == 2);
     auto l2 = flist::rev(flist::cons("char[]", std::ref(l1)));
     assert(flist::as_string(l2) == "[2.5;1;char[]]");
     auto l3 = flist::create('c', "s", std::string("string"));
@@ -47,6 +48,7 @@ int main()
     assert(flist::as_string(flat_ll) == "[1;2.5;2.5;1;char[];c;s;string]");
     auto l7 = flist::filter([](auto x) {return !std::is_integral_v<decltype(x)>;}, std::ref(flat_ll));
     assert(flist::as_string(l7) == "[2.5;2.5;char[];s;string]");
+    assert(flist::size(l7) == 5);
 
     auto custom_l = [i = 2](auto f, auto a)
     {
@@ -55,6 +57,7 @@ int main()
     assert(flist::as_string(custom_l) == "[This is ;2; ;custom call]");
     assert(flist::as_string(flist::rev(custom_l)) == "[custom call; ;2;This is ]");
     assert(flist::as_string(flist::rev(flist::rev(custom_l))) == "[This is ;2; ;custom call]");
+    assert(flist::size(custom_l) == 4);
 
     constexpr int N = 16;
     std::array<std::vector<int>, N> sets;

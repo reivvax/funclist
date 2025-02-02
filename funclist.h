@@ -30,6 +30,12 @@ namespace flist {
         return a;
     };
 
+    const auto size = [](auto l) {
+        return l([](auto _, size_t a) {
+            return ++a;
+        }, 0);
+    };
+
     const auto cons = [](auto x, auto l) {
         return [=](auto f, auto a) {
             return f(x, l(f, a));
