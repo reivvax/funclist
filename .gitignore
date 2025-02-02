@@ -1,0 +1,6 @@
+*.e
+*.o
+*.out
+compile.sh
+funclist_test.cpp
+funclist_test_extern.cpp
