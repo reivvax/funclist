@@ -13,14 +13,6 @@ namespace detail {
     template<typename T, typename ...Args>
     auto create(T first, Args... args);
 
-    template <typename T>
-    constexpr auto maybe_unwrap(T t) {
-        if constexpr (std::is_same_v<T, std::reference_wrapper<decltype(t)>>)
-            return t.get();
-        else
-            return t;
-    }
-
     template<typename It, typename F, typename A>
     A of_range(It current, It end, F f, A a) {
         if (current == end)
